@@ -1,35 +1,42 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Ignore Node.js modules
 /node_modules
+
+# Ignore Yarn's Plug'n'Play (PnP) data
 /.pnp
 .pnp.js
 
-# testing
+# Ignore test coverage reports
 /coverage
 
-# next.js
+# Ignore Next.js build output
 /.next/
 /out/
 
-# production
+# Ignore build output
 /build
 
-# misc
+# Ignore macOS-specific files
 .DS_Store
+
+# Ignore SSL certificate files
 *.pem
 
-# debug
+# Ignore npm and yarn log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# Ignore local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# vercel
+# Ignore Vercel (if using Vercel for deployment)
 .vercel
 
-# typescript
+# Ignore TypeScript build information
 *.tsbuildinfo
+
+# Ignore Next.js environment declaration file
 next-env.d.ts
