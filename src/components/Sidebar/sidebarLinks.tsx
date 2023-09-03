@@ -31,6 +31,14 @@ const SidebarLinks = () => {
     }
   }, []);
 
+  const handleLogOut = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    localStorage.removeItem("userId");
+    localStorage.removeItem("page_id");
+    localStorage.removeItem("page_name");
+    window.location.reload();
+  };
+
   return (
     <ul className="w-full flex flex-col h-full gap-5 items-start mx-5">
       {sidebarLinksData.map((data) => {
@@ -52,7 +60,10 @@ const SidebarLinks = () => {
           </li>
         );
       })}
-      <li className="mt-auto mb-10 w-[80%] bg-[#f34141] active:bg-[#c84747] cursor-pointer transition-all duration-200 pl-5 p-3 rounded-lg">
+      <li
+        onClick={handleLogOut}
+        className="mt-auto mb-10 w-[80%] bg-[#f34141] active:bg-[#c84747] cursor-pointer transition-all duration-200 pl-5 p-3 rounded-lg"
+      >
         <button className="flex items-center gap-3">
           <LogoutIcon className="text-white" />
           <span className="text-white font-medium">Logout</span>

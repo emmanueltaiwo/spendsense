@@ -24,14 +24,21 @@ export const VirtuosoTableComponents: TableComponents<Data> = {
   Table: (props) => (
     <Table
       {...props}
-      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
+      style={{ borderCollapse: "separate", tableLayout: "fixed" }}
     />
   ),
   TableHead,
   TableRow: ({ item: _item, ...props }) => (
     <TableRow
       {...props}
-      sx={{ "&:hover": { backgroundColor: "#e0e0e0", cursor: "pointer" } }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = "#e0e0e0";
+        e.currentTarget.style.cursor = "pointer";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = "";
+        e.currentTarget.style.cursor = "default";
+      }}
     />
   ),
   TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
