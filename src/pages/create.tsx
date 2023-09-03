@@ -52,9 +52,6 @@ const Create = () => {
           if (doc.exists()) {
             const getExpenses = doc.data().expenses;
             setExpenses(getExpenses);
-            console.log("Current data:", getExpenses);
-
-            console.log("filtered", filteredExpenses);
           }
         });
 
@@ -63,7 +60,7 @@ const Create = () => {
     };
 
     getAllExpenses();
-  }, []);
+  });
 
   useEffect(() => {
     const validateUserEntry = async () => {

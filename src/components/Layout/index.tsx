@@ -37,7 +37,7 @@ const Layout = (props: LayoutProps) => {
       }
     };
     getUserDetails();
-  }, []);
+  }, [userId]);
   return (
     <Fragment>
       <Header
