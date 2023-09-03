@@ -35,7 +35,7 @@ const Dashboard = () => {
   useEffect(() => {
     localStorage.removeItem("page_id");
     localStorage.setItem("page_id", "1");
-  });
+  }, []);
 
   useEffect(() => {
     setFilteredExpenses(expenses);
@@ -52,6 +52,7 @@ const Dashboard = () => {
           if (doc.exists()) {
             const getExpenses = doc.data().expenses;
             setExpenses(getExpenses);
+            setFilteredExpenses(getExpenses);
           }
         });
 
@@ -60,7 +61,7 @@ const Dashboard = () => {
     };
 
     getAllExpenses();
-  });
+  }, []);
 
   const handleSearchExpenses = (searchStr: string, e: any) => {
     const filterExpenses = expenses.filter((expense) => {

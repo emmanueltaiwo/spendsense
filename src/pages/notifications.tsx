@@ -35,7 +35,7 @@ const Notifications = () => {
   useEffect(() => {
     localStorage.removeItem("page_id");
     localStorage.setItem("page_id", "5");
-  });
+  }, []);
 
   useEffect(() => {
     setFilteredExpenses(expenses);
@@ -60,7 +60,7 @@ const Notifications = () => {
     };
 
     getAllExpenses();
-  });
+  }, []);
 
   useEffect(() => {
     const validateUserEntry = async () => {

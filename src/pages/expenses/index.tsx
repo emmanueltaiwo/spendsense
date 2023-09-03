@@ -35,7 +35,7 @@ const Expenses = () => {
   useEffect(() => {
     localStorage.removeItem("page_id");
     localStorage.setItem("page_id", "3");
-  });
+  }, []);
 
   useEffect(() => {
     setFilteredExpenses(expenses);
@@ -60,7 +60,7 @@ const Expenses = () => {
     };
 
     getAllExpenses();
-  });
+  }, []);
 
   useEffect(() => {
     const validateUserEntry = async () => {
