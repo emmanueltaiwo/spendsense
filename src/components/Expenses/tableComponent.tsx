@@ -18,9 +18,9 @@ interface Data {
 }
 
 export const VirtuosoTableComponents: TableComponents<Data> = {
-  Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
-    <TableContainer component={Paper} {...props} ref={ref} />
-  )),
+  Scroller: React.forwardRef<HTMLDivElement>(function myScroller(props, ref) {
+    return <TableContainer component={Paper} {...props} ref={ref} />;
+  }),
   Table: (props) => (
     <Table
       {...props}
@@ -29,7 +29,10 @@ export const VirtuosoTableComponents: TableComponents<Data> = {
   ),
   TableHead,
   TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
-  TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableBody {...props} ref={ref} />
-  )),
+  TableBody: React.forwardRef<HTMLTableSectionElement>(function myTableBody(
+    props,
+    ref
+  ) {
+    return <TableBody {...props} ref={ref} />;
+  }),
 };
