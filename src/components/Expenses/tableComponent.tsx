@@ -17,40 +17,19 @@ interface Data {
   expenseStatus: string;
 }
 
-const VirtuosoTableComponents: TableComponents<Data> = {
+export const VirtuosoTableComponents: TableComponents<Data> = {
   Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
     <TableContainer component={Paper} {...props} ref={ref} />
   )),
   Table: (props) => (
     <Table
       {...props}
-      style={{ borderCollapse: "separate", tableLayout: "fixed" }}
+      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
     />
   ),
-  TableHead: (props) => <TableHead {...props} />,
-  TableRow: ({ item: _item, ...props }) => (
-    <TableRow
-      {...props}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "#e0e0e0";
-        e.currentTarget.style.cursor = "pointer";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "";
-        e.currentTarget.style.cursor = "default";
-      }}
-    />
-  ),
+  TableHead,
+  TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
   TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
     <TableBody {...props} ref={ref} />
   )),
 };
-
-// Set display names for each component
-(VirtuosoTableComponents.Scroller as any).displayName = "Scroller";
-(VirtuosoTableComponents.Table as any).displayName = "CustomTable";
-(VirtuosoTableComponents.TableHead as any).displayName = "CustomTableHead";
-(VirtuosoTableComponents.TableRow as any).displayName = "CustomTableRow";
-(VirtuosoTableComponents.TableBody as any).displayName = "CustomTableBody";
-
-export { VirtuosoTableComponents };
