@@ -55,7 +55,7 @@ export function rowContent(_index: number, row: Data) {
       {columns.map((column) => (
         <TableCell
           key={column.dataKey}
-          align={column.numeric || false ? "right" : "left"}
+          align={column.numeric ? "right" : "left"}
         >
           {row[column.dataKey]}
         </TableCell>

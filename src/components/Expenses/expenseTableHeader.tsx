@@ -57,7 +57,7 @@ export function fixedHeaderContent() {
         <TableCell
           key={column.dataKey}
           variant="head"
-          align={column.numeric || false ? "right" : "left"}
+          align={column.numeric ? "right" : "left"}
           style={{ width: column.width }}
           sx={{
             backgroundColor: "background.paper",
