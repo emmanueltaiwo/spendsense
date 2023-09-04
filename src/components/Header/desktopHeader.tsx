@@ -8,10 +8,11 @@ interface DesktopHeaderProps {
   profilePic: string;
   fullName: string;
   handleSearchExpenses: (searchStr: string, e: any) => void;
+  pageName: string;
 }
 
 const DesktopHeader = (props: DesktopHeaderProps) => {
-  const { profilePic, fullName, handleSearchExpenses } = props;
+  const { profilePic, fullName, handleSearchExpenses, pageName } = props;
 
   const [searchStr, setSearchStr] = useState("");
   return (
@@ -20,13 +21,18 @@ const DesktopHeader = (props: DesktopHeaderProps) => {
         <SearchIcon className="text-gray-400" />
         <input
           type="text"
-          className="w-full text-md font-medium bg-transparent py-3 px-2 outline-none"
+          className={`${
+            pageName === "Profile"
+              ? "w-full text-md font-medium bg-transparent py-3 px-2 outline-none cursor-not-allowed"
+              : "w-full text-md font-medium bg-transparent py-3 px-2 outline-none"
+          }`}
           placeholder="Search for expenses"
           value={searchStr}
           onChange={(e) => {
             setSearchStr(e.target.value);
             handleSearchExpenses(e.target.value, e);
           }}
+          disabled={pageName === "Profile"}
         />
       </div>
       <Link

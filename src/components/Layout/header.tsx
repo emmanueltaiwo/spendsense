@@ -52,6 +52,7 @@ const Header = (props: HeaderProps) => {
           handleSearchExpenses={handleSearchExpenses}
           profilePic={profilePic}
           fullName={fullName}
+          pageName={pageName}
         />
         <MobileHeader
           handleSidebarOpen={handleSidebarOpen}

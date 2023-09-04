@@ -25,7 +25,7 @@ const NotificationsContainer = (props: NotificationsContainerProps) => {
   return (
     <section className="w-full flex flex-col gap-10">
       <MobileSearch handleSearchExpenses={handleSearchExpenses} />
-      <div className="lg:mx-10 xl:mx-16 mt-10 grid gap-10 xl:grid-cols-[2.7fr_1.3fr] p-3">
+      <div className="lg:mx-10 xl:mx-16 md:mt-10 grid gap-10 xl:grid-cols-[2.7fr_1.3fr] p-3">
         <NotificationsBox />
         <TopExpensesList expenses={expenses} />
       </div>
