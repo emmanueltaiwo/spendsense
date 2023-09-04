@@ -49,7 +49,7 @@ const columns: ColumnData[] = [
   },
 ];
 
-export function rowContent(_index: number, row: Data) {
+export function RowContent(_index: number, row: Data) {
   return (
     <React.Fragment>
       {columns.map((column) => (

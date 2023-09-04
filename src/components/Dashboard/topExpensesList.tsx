@@ -20,13 +20,14 @@ const TopExpensesList = (props: TopExpensesListProps) => {
   const { expenses } = props;
 
   const getTopExpensesList = () => {
-    const topExpenses =
-      expenses &&
-      expenses.length > 0 &&
-      expenses.sort(
+    // Sort the expenses array in descending order by expenseAmount
+    const sortedExpenses = expenses
+      .slice()
+      .sort(
         (a, b) => parseFloat(b.expenseAmount) - parseFloat(a.expenseAmount)
       );
-    return topExpenses || [];
+
+    return sortedExpenses.slice(0, 5); // Return the top 5 expenses
   };
 
   const getExpenseCurrency =
@@ -53,7 +54,9 @@ const TopExpensesList = (props: TopExpensesListProps) => {
                   {expense.expenseItem}:
                 </h3>
                 <span className="bg-gray-500 ml-auto text-white px-2 py-[0.5px] rounded-xl text-lg font-bold">
-                  {getExpenseCurrency && getExpenseCurrency[0] || "$"}{" "}
+                  {Array.isArray(getExpenseCurrency)
+                    ? getExpenseCurrency[0]
+                    : "$"}{" "}
                   {parseFloat(expense.expenseAmount).toLocaleString()}
                 </span>
               </li>

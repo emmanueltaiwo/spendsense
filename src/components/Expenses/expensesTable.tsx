@@ -4,7 +4,7 @@ import { TableVirtuoso } from "react-virtuoso";
 import Link from "next/link";
 import { VirtuosoTableComponents } from "./tableComponent";
 import { fixedHeaderContent } from "./expenseTableHeader";
-import { rowContent } from "./expenseTableRow";
+import { RowContent } from "./expenseTableRow";
 
 interface Data {
   id: string;
@@ -51,7 +51,7 @@ const ExpensesTable = (props: ExpensesTableProps) => {
         data.expenseId,
         data.expenseItem,
         data.expenseCurrency,
-        data.expenseCurrency + data.expenseAmount,
+        data.expenseCurrency + parseFloat(data.expenseAmount).toLocaleString(),
         data.expenseDate,
         data.expenseStatus
       )
@@ -69,7 +69,7 @@ const ExpensesTable = (props: ExpensesTableProps) => {
 
       <Paper
         className={`${
-          pageName === "expenses" ? "h-[800px] w-[100%]" : "h-[300px] w-[100%]"
+          pageName === "expenses" ? "h-[650px] w-[100%]" : "h-[300px] w-[100%]"
         }`}
       >
         {filteredExpenses && filteredExpenses.length > 0 ? (
@@ -77,7 +77,7 @@ const ExpensesTable = (props: ExpensesTableProps) => {
             data={rows}
             components={VirtuosoTableComponents}
             fixedHeaderContent={fixedHeaderContent}
-            itemContent={rowContent}
+            itemContent={RowContent}
           />
         ) : (
           <div className="flex justify-center items-center h-full">
