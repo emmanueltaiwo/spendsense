@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import EditNotificationsIcon from "@mui/icons-material/EditNotifications";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../../firebase";
 
 interface NotificationsData {
@@ -64,9 +64,9 @@ const NotificationsBox = () => {
                 <p className="text-[15px] font-medium text-blue-800">
                   {`You added ${
                     data.title
-                  } to your expenses list which you bough ${
+                  } to your expenses list which you bought ${
                     data.currency
-                  }${data.amount.toLocaleString()}`}
+                  }${parseFloat(data.amount.toLocaleString())}`}
                 </p>
                 <span className="text-sm font-light w-full bg-slate-800 p-3 rounded-lg text-white">
                   {data.date}
