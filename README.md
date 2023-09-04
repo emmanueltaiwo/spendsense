@@ -1,38 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SpendSense - Expense Tracking Web App
 
-## Getting Started
+![SpendSense Logo](/assets/Images/spendsense.png)
 
-First, run the development server:
+SpendSense is a user-friendly web application built with TypeScript that empowers you to manage your finances efficiently. It offers a range of features designed to help you take control of your expenses and gain valuable financial insights.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Expense Tracking
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+SpendSense allows you to effortlessly record and categorize your daily expenses. Keep a detailed record of your spending habits, making it easier to manage your budget and financial goals.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Financial Insights
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Gain valuable insights into your spending patterns and financial health. SpendSense provides visualizations and reports that help you understand where your money is going, allowing you to make informed financial decisions.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Profile Management
 
-## Learn More
+Manage your profile information with ease. Update your name, email address, and password as needed to keep your account information up-to-date.
 
-To learn more about Next.js, take a look at the following resources:
+### Accessibility
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+SpendSense is designed with accessibility in mind, ensuring that users of all abilities can navigate and use the application comfortably.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+SpendSense is built using cutting-edge web technologies, including:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [React](https://reactjs.org/): A popular JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/): A strict syntactical superset of JavaScript that adds static typing to the language.
+- [Firebase](https://firebase.google.com/): Firebase provides a robust backend infrastructure, including authentication and a real-time database.
+- [Next.js](https://nextjs.org/): A React framework for building server-rendered applications.
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for designing responsive and accessible web applications.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+If you have any questions or suggestions, please contact me at [devemmanuel1@gmail.com](mailto:devemmanuel1@gmail.com).
