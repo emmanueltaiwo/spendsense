@@ -8,81 +8,168 @@ const CreateExpenses = () => {
   const [expenseDate, setExpenseDate] = useState("");
   const [expenseCurrency, setExpenseCurrency] = useState("");
 
- const createNewExpense = async (e: { preventDefault: () => void }) => {
-   e.preventDefault();
+const currencyOptions = [
+  "$",
+  "€",
+  "£",
+  "¥",
+  "₹",
+  "₽",
+  "₩",
+  "₪",
+  "₺",
+  "₴",
+  "₮",
+  "₦",
+  "₨",
+  "₱",
+  "₲",
+  "₡",
+  "₢",
+  "₣",
+  "₤",
+  "₧",
+  "₫",
+  "₭",
+  "₮",
+  "₯",
+  "₰",
+  "₳",
+  "₴",
+  "₵",
+  "₶",
+  "₷",
+  "₸",
+  "₹",
+  "₺",
+  "₻",
+  "₼",
+  "₽",
+  "₾",
+  "₿",
+  "៛",
+  "₠",
+  "₡",
+  "₢",
+  "₣",
+  "₤",
+  "₥",
+  "₦",
+  "₧",
+  "₨",
+  "₩",
+  "₪",
+  "₫",
+  "€",
+  "₭",
+  "₮",
+  "₯",
+  "₰",
+  "₱",
+  "₲",
+  "₳",
+  "₴",
+  "₵",
+  "₶",
+  "₷",
+  "₸",
+  "₹",
+  "₺",
+  "₻",
+  "₼",
+  "₽",
+  "₾",
+  "₿",
+  "﷼",
+  "𑿠",
+  "﷼",
+];
 
-   const getCurrentUserId = localStorage.getItem("userId");
 
-   if (getCurrentUserId !== null) {
-     // Get a reference to the user's document in expenses collection
-     const userExpensesDocRef = doc(db, "expenses", getCurrentUserId);
-     const userNotificationsDocRef = doc(db, "notifications", getCurrentUserId);
-     // Get the user's current document data
-     const userExpensesDoc = await getDoc(userExpensesDocRef);
-     const userNotificationsDoc = await getDoc(userNotificationsDocRef);
 
-     // Check if the user document exists
-     if (!userExpensesDoc.exists()) {
-       // Create the user document with initial data
-       await setDoc(userExpensesDocRef, { expenses: [] });
-     }
 
-     if (!userNotificationsDoc.exists()) {
-       // Create the user document with initial data
-       await setDoc(userNotificationsDocRef, { notifications: [] });
-     }
 
-     // Get the updated user document data
-     const updatedUserExpensesDoc = await getDoc(userExpensesDocRef);
-     let userExpensesData = updatedUserExpensesDoc.data();
-     let userNotificationsData = (await getDoc(userNotificationsDocRef)).data();
+  const createNewExpense = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
 
-     if (!userExpensesData) {
-       userExpensesData = { expenses: [] };
-     }
+    const getCurrentUserId = localStorage.getItem("userId");
 
-     if (!userNotificationsData) {
-       userNotificationsData = { notifications: [] };
-     }
+    if (getCurrentUserId !== null) {
+      // Get a reference to the user's document in expenses collection
+      const userExpensesDocRef = doc(db, "expenses", getCurrentUserId);
+      const userNotificationsDocRef = doc(
+        db,
+        "notifications",
+        getCurrentUserId
+      );
+      // Get the user's current document data
+      const userExpensesDoc = await getDoc(userExpensesDocRef);
+      const userNotificationsDoc = await getDoc(userNotificationsDocRef);
 
-     // Add the new expense object to the expenses array
-     const newExpense = {
-       expenseItem: expenseItem,
-       expenseAmount: expenseAmount,
-       expenseDate: expenseDate,
-       expenseCurrency: expenseCurrency,
-       expenseStatus: "Success",
-       expenseId: expenseDate + expenseAmount,
-     };
+      // Check if the user document exists
+      if (!userExpensesDoc.exists()) {
+        // Create the user document with initial data
+        await setDoc(userExpensesDocRef, { expenses: [] });
+      }
 
-     const newNotification = {
-       id: expenseDate + expenseItem,
-       title: expenseItem,
-       currency: expenseCurrency,
-       amount: expenseAmount,
-       date: expenseDate,
-     };
+      if (!userNotificationsDoc.exists()) {
+        // Create the user document with initial data
+        await setDoc(userNotificationsDocRef, { notifications: [] });
+      }
 
-     userExpensesData.expenses.push(newExpense);
+      // Get the updated user document data
+      const updatedUserExpensesDoc = await getDoc(userExpensesDocRef);
+      let userExpensesData = updatedUserExpensesDoc.data();
+      let userNotificationsData = (
+        await getDoc(userNotificationsDocRef)
+      ).data();
 
-     // Make sure userNotificationsData.notifications is an array
-     if (!Array.isArray(userNotificationsData.notifications)) {
-       userNotificationsData.notifications = [];
-     }
+      if (!userExpensesData) {
+        userExpensesData = { expenses: [] };
+      }
 
-     userNotificationsData.notifications.push(newNotification);
+      if (!userNotificationsData) {
+        userNotificationsData = { notifications: [] };
+      }
 
-     // Update the user's document with the modified expenses array
-     await setDoc(userExpensesDocRef, userExpensesData);
-     await setDoc(userNotificationsDocRef, userNotificationsData);
+      // Add the new expense object to the expenses array
+      const newExpense = {
+        expenseItem: expenseItem,
+        expenseAmount: expenseAmount,
+        expenseDate: expenseDate,
+        expenseCurrency: expenseCurrency,
+        expenseStatus: "Success",
+        expenseId: expenseDate + expenseAmount,
+      };
 
-     // Reset the form values
-     setExpenseItem("");
-     setExpenseAmount("");
-     setExpenseCurrency("");
-     setExpenseDate("");
-   }
- };
+      const newNotification = {
+        id: expenseDate + expenseItem,
+        title: expenseItem,
+        currency: expenseCurrency,
+        amount: expenseAmount,
+        date: expenseDate,
+      };
+
+      userExpensesData.expenses.push(newExpense);
+
+      // Make sure userNotificationsData.notifications is an array
+      if (!Array.isArray(userNotificationsData.notifications)) {
+        userNotificationsData.notifications = [];
+      }
+
+      userNotificationsData.notifications.push(newNotification);
+
+      // Update the user's document with the modified expenses array
+      await setDoc(userExpensesDocRef, userExpensesData);
+      await setDoc(userNotificationsDocRef, userNotificationsData);
+
+      // Reset the form values
+      setExpenseItem("");
+      setExpenseAmount("");
+      setExpenseCurrency("");
+      setExpenseDate("");
+    }
+  };
 
   return (
     <section className="flex flex-col gap-5 bg-white rounded-lg p-5">
@@ -105,15 +192,22 @@ const CreateExpenses = () => {
           onChange={(e) => setExpenseItem(e.target.value)}
         />
         <div className="flex gap-3">
-          <input
-            type="text"
+          <select
             className="w-[40%] bg-none border-2 border-blue-700 py-4 px-4 text-black placeholder-blue-700 font-medium rounded-lg outline-blue-700"
-            placeholder="Currency e.g ($)"
-            pattern="^\$|€|£|¥|₹|₽|₩|₪|₺|₴|₮|₦|₨|₱|₲|₡|₢|₣|₤|₧|₫|₭|₮|₯|₰|₳|₴|₵|₶|₷|₸|₹|₺|₻|₼|₽|₾|₿|៛|₠|₡|₢|₣|₤|₥|₦|₧|₨|₩|₪|₫|€|₭|₮|₯|₰|₱|₲|₳|₴|₵|₶|₷|₸|₹|₺|₻|₼|₽|₾|₿|﷼|𑿠|﷼"
-            value={expenseCurrency}
             required
+            value={expenseCurrency}
             onChange={(e) => setExpenseCurrency(e.target.value)}
-          />
+          >
+            <option value="" disabled>
+              Select Currency
+            </option>
+            {currencyOptions.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+
           <input
             type="number"
             className="w-full bg-none border-2 border-blue-700 py-4 px-4 text-black placeholder-blue-700 font-medium rounded-lg outline-blue-700"
